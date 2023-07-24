@@ -4,7 +4,6 @@ import { useContacts } from 'hooks/useContacts';
 
 export const ContactList = () => {
   const { filteredContacts, deleteContact, error } = useContacts();
-  console.log(error);
 
   return (
     <>
