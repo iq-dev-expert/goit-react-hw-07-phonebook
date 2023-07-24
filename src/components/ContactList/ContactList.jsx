@@ -6,24 +6,28 @@ export const ContactList = () => {
   const { filteredContacts, deleteContact } = useContacts();
 
   return (
-    <List>
-      {filteredContacts.map(({ id, name, number }) => {
-        return (
-          <li key={id}>
-            <p>
-              {name}: {number}{' '}
-            </p>
-            <Button
-              type="button"
-              onClick={() => {
-                deleteContact(id);
-              }}
-            >
-              Delete
-            </Button>
-          </li>
-        );
-      })}
-    </List>
+    <>
+      {filteredContacts.length > 0 && (
+        <List>
+          {filteredContacts.map(({ id, name, phone }) => {
+            return (
+              <li key={id}>
+                <p>
+                  {name}: {phone}{' '}
+                </p>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    deleteContact(id);
+                  }}
+                >
+                  Delete
+                </Button>
+              </li>
+            );
+          })}
+        </List>
+      )}
+    </>
   );
 };

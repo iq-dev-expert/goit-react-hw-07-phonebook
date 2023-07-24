@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { deleteContact } from './contactsSlice';
+import { deleteContact } from 'redux/operations';
 
 const initialState = '';
 
@@ -12,7 +12,7 @@ export const filterSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(deleteContact, () => initialState);
+    builder.addCase(deleteContact.fulfilled, () => initialState);
   },
 });
 
