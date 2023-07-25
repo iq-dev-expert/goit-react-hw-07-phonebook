@@ -1,26 +1,23 @@
 import { ThemeProvider } from '@emotion/react';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { useDispatch } from 'react-redux';
 import { useContacts } from 'hooks/useContacts';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
+import { Loader } from 'components/Loader/Loader';
 import { Container } from 'components/App/App.styled';
 import { theme } from 'utils-style/Theme';
-import { Loader } from 'components/Loader/Loader';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const { isLoading } = useContacts();
+  const { fetchContacts } = useContacts();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    fetchContacts();
+  }, [fetchContacts]);
 
   return (
     <ThemeProvider theme={theme}>
-      <Loader isLoading={isLoading} />
+      <Loader />
       <Container>
         <h1>Phonebook</h1>
         <ContactForm />
