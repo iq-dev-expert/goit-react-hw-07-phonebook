@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import PropTypes from 'prop-types';
+import { useContacts } from 'hooks/useContacts';
 
-export const Loader = ({ isLoading }) =>
-  isLoading ? Loading.dots() : Loading.remove();
+export const Loader = () => {
+  const { isLoading } = useContacts();
 
-Loader.propTypes = { isLoading: PropTypes.bool.isRequired };
+  useEffect(() => {
+    isLoading ? Loading.dots() : Loading.remove();
+  });
+
+  return null;
+};

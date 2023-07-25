@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from 'redux/operations';
 import {
@@ -21,6 +22,11 @@ export const useContacts = () => {
   };
   const deleteContact = contactId => dispatch(actions.deleteContact(contactId));
 
+  const fetchContacts = useCallback(
+    () => dispatch(actions.fetchContacts()),
+    [dispatch]
+  );
+
   return {
     contacts,
     isLoading,
@@ -29,5 +35,6 @@ export const useContacts = () => {
     filteredContacts,
     addContact,
     deleteContact,
+    fetchContacts,
   };
 };
